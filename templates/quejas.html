@@ -1,0 +1,113 @@
+{% extends './layout.html' %}
+
+
+{% block contenido2 %} 
+
+
+    <div class="content-wrapper" style="background-image: url('../static/img/fondo4.png');">
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+
+                    <br><br>
+                    <div id="contenedor" class="col-12" align="center">
+                        <div id="contenedor2" class="col-9" align="left">
+                            <div class="card border-info">
+                                <div class="card-body">
+                                    <ul class="list-group list-group-light">
+                                        <li class="list-group-item">
+                                            <div class="container">
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <section class="content">
+                                                            <div class="row">
+                                                                <div class="col-md-12">
+                                                                    <form class="was-validated">
+                                                                        <div class="card2 card-primary">
+
+                                                                            <div class="card-header">
+                                                                                <h3 class="card-title">P.Q.R.S.</h3>
+                                                                            </div>
+                                                                            <div class="container " style="background-color: #BFC4C4;">
+                                                                                <br>
+                                                                                <h4>
+                                                                                    <b>TIPO DE SOLICITUD</b>
+
+                                                                                </h4>
+
+                                                                                <input type="radio" name="txt_pqr" id="txt_pqrp">
+                                                                                <label>Petición</label> <br>
+
+                                                                                <input type="radio" name="txt_pqr" id="txt_pqrq">
+                                                                                <label>Queja/Reclamo</label><br>
+
+                                                                                <input type="radio" name="txt_pqr" id="txt_pqrs">
+                                                                                <label>Sugerencia</label><br>
+                                                                                <br>
+
+                                                                                <div class="row justify-content-start">
+                                                                                    <!-----contenedor 1---->
+                                                                                    <div class="col-12">
+                                                                                        <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                                                                                        <input type="text" class="form-control" id="">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <br>
+                                                                                <label for="exampleInputEmail1" class="form-label">Tipo de documento</label>
+                                                                                <div class="mb-3">
+                                                                                    <select class="form-select" required aria-label="select example">
+                                          <option value="1">Cedula de ciudadania</option>
+                                          <option value="2">Tarjeta de identidad</option>
+                                          <option value="3">Pasaporte</option>
+                                          <option value="4">Otro</option>
+                                        </select>
+                                                                                </div>
+                                                                                <br>
+                                                                                <div class="row justify-content-start">
+                                                                                    <!-----contenedor 1---->
+                                                                                    <div class="col-12">
+                                                                                        <label for="exampleInputEmail1" class="form-label">Numero de documento</label>
+                                                                                        <input type="number" class="form-control" id="">
+                                                                                    </div>
+                                                                                </div>
+                                                                                <br>
+                                                                                <label for="exampleInputEmail1" class="form-label">Adjuntar documento</label>
+                                                                                <div class="mb-3">
+                                                                                    <input type="file" class="form-control" aria-label="file example" required>
+                                                                                    <div class="invalid-feedback">Subir fotocopia de documento</div>
+                                                                                </div>
+
+                                                                                <div class="mb-3">
+                                                                                    <label for="validationTextarea" class="form-label">Descripción de solicitud</label>
+                                                                                    <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Area de texto" required></textarea>
+                                                                                    <div class="invalid-feedback">
+                                                                                        Por favor haga una breve descripción de la solicitud
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="mb-3">
+                                                                                    <button class="btn btn-primary" type="submit">Enviar</button>
+                                                                                </div>
+                                                                                <br>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                            </div>
+                                                    </div>
+                                                    </section>
+                                                </div>
+                                            </div>
+                                </div>
+                                </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
