@@ -1,6 +1,12 @@
 from flask import Flask, render_template, request
 from flask import redirect
 from flask import url_for
+
+from tipos import tipo
+from precio import precio
+from contactos import contacto
+from quejas import queja
+
 from conexionBD import *  #Importando conexion BD
 from funciones import *  #Importando mis Funciones
 
@@ -9,6 +15,15 @@ from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
 
+app.register_blueprint(tipo)
+app.register_blueprint(precio)
+app.register_blueprint(contacto)
+app.register_blueprint(queja)
+
+@app.errorhandler(404)
+def page_not_found(error):
+    return (render_template("error.html", error="Página no encontrada..."),
+            404)
 
 app.secret_key = '97110c78ae51a45af397be6534caef90ebb9b1dcb3380af008f90b23a5d1616bf19bc29098105da20fe'
 
@@ -23,7 +38,7 @@ def loginUser():
         if request.method == 'POST' and 'correo' in request.form and 'password' in request.form:
             correo   = str(request.form['correo'])
             password   = str(request.form['password'])
-            
+
             # Comprobando si existe una cuenta
             cursor = conexion_MySQLdb.cursor(dictionary=True)
             cursor.execute("SELECT * FROM users WHERE correo = %s", [correo])
@@ -31,13 +46,13 @@ def loginUser():
 
             if account:
                 if check_password_hash(account['password'],password):
-                    # Crear datos de sesión, para poder acceder a estos datos en otras rutas 
+                    # Crear datos de sesión, para poder acceder a estos datos en otras rutas
                     session['conectado']        = True
                     session['nombre']           = account['nombre']
                     session['correo']          = account['correo']
 
                     msg = "Ha iniciado sesión correctamente."
-                    return render_template('menu.html', msjAlert = msg, typeAlert=1, dataLogin = dataLoginSesion())                    
+                    return render_template('menu.html', msjAlert = msg, typeAlert=1, dataLogin = dataLoginSesion())
                 else:
                     msg = 'Datos incorrectos, por favor verfique!'
                     return render_template('registro.html', msjAlert = msg, typeAlert=0)
@@ -63,7 +78,7 @@ def registerUser():
         cursor.execute('SELECT * FROM users WHERE correo = %s', (correo,))
         account = cursor.fetchone()
         cursor.close() #cerrrando conexion SQL
-          
+
         if account:
             msg = 'Ya existe un usuario con esta nombre!'
         elif password != repite_password:
@@ -99,32 +114,18 @@ def login():
     else:
         return render_template('registro.html')
 
-@app.route('/menu/')
-def menuC():
-    return render_template('menu.html')
+@app.route('/logout')
+def logout():
+    msgClose = ''
+    # Eliminar datos de sesión, esto cerrará la sesión del usuario
+    session.pop('conectado', None)
+    session.pop('nombre', None)
+    session.pop('correo', None)
+    #session.clear()
+    #msgClose ="La sesión fue cerrada correctamente"
+    return render_template('registro.html')
 
-@app.route('/lista/')
-def list():
-    return render_template('list.html')
-
-@app.route('/contacto/')
-def contactos():
-    return render_template('contactos.html')
-
-@app.route('/precios/')
-def precio():
-    return render_template('precio.html')
-
-@app.route('/queja/')
-def quejas():
-    return render_template('quejas.html')
- 
-
-@app.route('/errors/')
-def pagina_no_encontrada(error):
-    return render_template('error.html'), 404
-    
 
 if __name__ == '__main__':
-    app.register_error_handler(404, pagina_no_encontrada)
+    # app.register_error_handler(404, pagina_no_encontrada)
     app.run(debug=True, port=5000)

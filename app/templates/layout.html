@@ -46,10 +46,9 @@
         <nav class="main-header navbar navbar-expand navbar-blue navbar-dark">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" role="button" href="{{ url_for('index')}}">
+                    <a class="nav-link" role="button" href="{{ url_for('logout')}}">
                         <i class="fas fa-user-slash" ></i>
                     </a>
-                    
                     <div class="navbar-search-block">
                         <form class="form-inline">
                             <div class="input-group input-group-sm">
@@ -70,7 +69,7 @@
         </nav>
 
         <aside class="main-sidebar sidebar-dark-info elevation-4">
-            <a href="menu" class="brand-link">
+            <a href="/sesion" class="brand-link">
                 <img src="../static/img/CycLogo.png" alt="C&C logo" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light">C&C</span>
             </a>
@@ -89,13 +88,13 @@
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ url_for('list')}}" class="nav-link">
+                                    <a href="{{ url_for('tipo.tipos')}}" class="nav-link">
                                         <i class="nav-icon fas fa-star"></i>
                                         <p>Cuadros</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ url_for('precio')}}" class="nav-link">
+                                    <a href="{{ url_for('precio.precios')}}" class="nav-link">
                                         <i class="nav-icon fas fa-store"></i>
                                         <p>Consulta precio</p>
                                     </a>
@@ -105,14 +104,14 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ url_for('contactos')}}" class="nav-link">
+                            <a href="{{ url_for('contacto.contactos')}}" class="nav-link">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>Contactanos</p>
                             </a>
                         </li>
 
                         <li class="nav-item">
-                            <a href="{{ url_for('quejas')}}" class="nav-link">
+                            <a href="{{ url_for('queja.quejas')}}" class="nav-link">
                                 <i class="nav-icon fas fa-file"></i>
                                 <p>Quejas y reclamos</p>
                             </a>
