@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+
+
+{% block contenido2 %} 
+<div class="content-wrapper" style="background-image: url('../static/img/fondo4.png');">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <br><br>
+                <div id="contenedor" class="col-12" align="center">
+                    <div id="contenedor2" class="col-9" align="left">
+                        <div class="card border-info">
+                            <div class="card-body">
+                                <ul class="list-group list-group-light">
+                                    <li class="list-group-item">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div id="title">
+    <!--............................................................................................................................-->
+                                                       <h1> COMPRA EXITOSA</h1>
+                                                       <br><br>
+                                                       <h4>Tu paquete está en camino</h4>
+                                                       <br><br>
+                                                        <a class="btn btn-default" href="{{ url_for('carritocompras.carrito')}}">
+                                                            <span class="glyphicon glyphicon-shopping-cart"></span> Seguir comprando.
+                                                        </a>
+    <!--............................................................................................................................-->            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

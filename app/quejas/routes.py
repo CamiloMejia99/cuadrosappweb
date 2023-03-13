@@ -4,4 +4,4 @@ from conexionBD import *  #Importando conexion BD
 from funciones import *  #Importando mis Funciones
 @queja.route('/quejas')
 def quejas():
-     return render_template('quejas.html',dataLogin = dataLoginSesion())
+     return render_template('quejas.html',dataLogin = dataLoginSesion()) 

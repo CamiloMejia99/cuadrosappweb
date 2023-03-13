@@ -6,6 +6,7 @@ from tipos import tipo
 from precio import precio
 from contactos import contacto
 from quejas import queja
+from carrito import carritocompras
 
 from conexionBD import *  #Importando conexion BD
 from funciones import *  #Importando mis Funciones
@@ -19,6 +20,7 @@ app.register_blueprint(tipo)
 app.register_blueprint(precio)
 app.register_blueprint(contacto)
 app.register_blueprint(queja)
+app.register_blueprint(carritocompras)
 
 @app.errorhandler(404)
 def page_not_found(error):
@@ -106,6 +108,10 @@ def index():
 @app.route('/reg')
 def reg():
     return render_template('registro.html')
+
+@app.route('/compra')
+def compra():
+    return render_template('compra.html')
 
 @app.route('/login')
 def login():

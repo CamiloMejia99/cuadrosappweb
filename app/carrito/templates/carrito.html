@@ -1,0 +1,180 @@
+{% extends 'layout.html' %}
+
+
+{% block contenido2 %} 
+<div class="content-wrapper" style="background-image: url('../static/img/fondo4.png');">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <br><br>
+                <div id="contenedor" class="col-12" align="center">
+                    <div id="contenedor2" class="col-9" align="left">
+                        <div class="card border-info">
+                            <div class="card-body">
+                                <ul class="list-group list-group-light">
+                                    <li class="list-group-item">
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div id="title">
+    <!--............................................................................................................................-->
+                                                        <div class="container">
+                                                            <div class="row">
+                                                                <p><h2>CARRITO DE COMPRAS C&C</h2></p>
+                                                                <div class="col-sm-12">
+                                                                    <div>
+                                                                        {% with messages = get_flashed_messages() %}
+                                                                            {% if messages %}
+                                                                                <ul class=flashes>
+                                                                                    {% for message in messages %}
+                                                                                        <li>{{ message }}</li>
+                                                                                    {% endfor %}
+                                                                                </ul>
+                                                                            {% endif %}
+                                                                        {% endwith %}
+                                                                    </div>
+                                                                    {% if 'cart_item' in session %}
+                                                                        
+                                                                        <table class="table table-hover">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>Tus Cuadros</th>
+                                                                                    <th>Cantidad</th>
+                                                                                    <th class="text-center">Precio Unitario</th>
+                                                                                    <th class="text-center">Precio</th>
+                                                                                    <th> </th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                                {% for key, val in session['cart_item'].items() %}
+                                                                                    {% set quantity = session['cart_item'][key]['quantity'] %}
+                                                                                    {% set price = session['cart_item'][key]['price'] %}
+                                                                                    {% set item_price = session['cart_item'][key]['total_price'] %} 
+                                                                                    <tr>
+                                                                                        <td class="col-sm-8 col-md-6">
+                                                                                            <div class="media">
+                                                                                                <a class="thumbnail pull-left" href="#"> 
+                                                                                                    <img class="media-object" src="/static/images/product-images/{{ session['cart_item'][key]['image'] }}" style="width: 100px; height:100px;"> 
+                                                                                                </a>
+                                                                                                <div class="media-body">
+                                                                                                    <h4 class="media-heading"> 
+                                                                                                        <a href="#">{{ session['cart_item'][key]['name'] }}</a>
+                                                                                                    </h4>
+                                                                                                    <h5 class="media-heading"> by <a href="#">C&C</a></h5>
+                                                                                                    <span>Estado: </span><span class="text-success"><strong>En Existencia</strong></span>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td class="col-sm-1 col-md-1" style="text-align: center">
+                                                                                            <input type="email" class="form-control" value="{{ quantity }}">
+                                                                                        </td>
+                                                                                        <td class="col-sm-1 col-md-1 text-center">
+                                                                                            <strong>${{ price }} </strong>
+                                                                                        </td>
+                                                                                        <td class="col-sm-1 col-md-1 text-center">
+                                                                                            <strong>${{ item_price }} </strong>
+                                                                                        </td>
+                                                                                        <td class="col-sm-1 col-md-1">
+                                                                                            <a href="{{ url_for('.delete_product', code=session['cart_item'][key]['code']) }}" class="btn btn-danger">
+                                                                                                <span class="glyphicon glyphicon-remove"></span> Eliminar
+                                                                                            </a>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                {% endfor %}
+                                                                            <tr>
+                                                                                <td colspan="4">
+                                                                                    <h5>Cantidad de cuadros</h5>
+                                                                                </td>
+                                                                                <td class="text-right">
+                                                                                    <h5><strong>{{ session['all_total_quantity'] }}</strong></h5>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="3">
+                                                                                    <h3>Total</h3>
+                                                                                </td>
+                                                                                <td colspan="2" class="text-right">
+                                                                                    <h3><strong>$ {{ session['all_total_price'] }}</strong></h3>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <td colspan="4">
+                                                                                    <a class="btn btn-default" href="{{ url_for('tipo.tipos')}}">
+                                                                                        <span class="glyphicon glyphicon-shopping-cart"></span> Visualizar lista.
+                                                                                    </a>
+                                                                                </td>
+                                                                                <td>
+                                                                                    <a class="btn btn-default" href="{{ url_for('compra')}}">
+                                                                                        <span class="glyphicon glyphicon-shopping-cart"></span>Pagar
+                                                                                    </a>
+                                                                                </td>
+                                                                            </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    {% else: %}
+                                                                        <div class="no-records">Tu carrito esta vacio.</div>
+                                                                    {% endif %}
+                                                                </div>
+                                                            </div>
+                                                        </div>
+    <!--............................................................................................................................-->            
+                                                        <section class="our-publication pt-100 pb-70">
+                                                            <div class="container">
+                                                                <div class="row">
+                                                                    {% for product in carrito %}
+                                                                        <div class="col-sm-6 col-lg-4"> 
+                                                                            <form method="post" action="/add">
+                                                                                <div class="single-publication">
+                                                                                    <figure >
+                                                                                        <a href="#">
+                                                                                            <img src="/static/images/product-images/{{ product.image }}" height="150">
+                                                                                        </a>
+                                                                                        <ul>
+                                                                                            <li><a href="#" title="Add to Favorite"><i class="fa fa-heart"></i></a></li>
+                                                                                            <li><a href="#" title="Add to Compare"><i class="fa fa-refresh"></i></a></li>
+                                                                                            <li><a href="#" title="Quick View"><i class="fa fa-search"></i></a></li>
+                                                                                        </ul>
+                                                                                    </figure>
+                                                            
+                                                                                    <div class="publication-content">
+                                                                                        <span class="category">{{ product.category }}</span>
+                                                                                        <h3><a href="#">{{ product.name }}</a></h3>
+                                                                                        <ul>
+                                                                                            <li><i class="icofont-star"></i></li>
+                                                                                            <li><i class="icofont-star"></i></li>
+                                                                                            <li><i class="icofont-star"></i></li>
+                                                                                            <li><i class="icofont-star"></i></li>
+                                                                                            <li><i class="icofont-star"></i></li>
+                                                                                        </ul>
+                                                                                        <h4 class="price">$ {{ product.price }}</h4>
+                                                                                    </div>
+                                                            
+                                                                                    <div class="add-to-cart">
+                                                                                        <input type="hidden" name="code" value="{{ product.code }}"/>
+                                                                                        <input type="text" class="product-quantity" name="quantity" value="1" size="2" />
+                                                                                        <input type="submit" value="Add to Cart" class="default-btn" />
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                    {% endfor %}    
+                                                                </div>
+                                                            </div>
+                                                        </section>
+    <!--............................................................................................................................-->            
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

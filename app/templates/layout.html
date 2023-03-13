@@ -25,10 +25,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
     <link rel="stylesheet" href="../static/css/styleLog.css">
+    <link rel="stylesheet" href="../static/css/stylecar.css">
+    
     <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@700&family=Source+Serif+Pro:ital,wght@1,600&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
-
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> 
     <script >
 		var btnwpp = new Audio();
 		btnwpp.src="../static/audios/Whatsapp.mp3"
@@ -48,28 +53,18 @@
                 <li class="nav-item">
                     <a class="nav-link" role="button" href="{{ url_for('logout')}}">
                         <i class="fas fa-user-slash" ></i>
+                        
                     </a>
-                    <div class="navbar-search-block">
-                        <form class="form-inline">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Buscar" aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" role="button" href="{{ url_for('carritocompras.carrito')}}">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </li>  
             </ul>
         </nav>
-
         <aside class="main-sidebar sidebar-dark-info elevation-4">
-            <a href="/sesion" class="brand-link">
+            <a href='sesion'class="brand-link">
                 <img src="../static/img/CycLogo.png" alt="C&C logo" class="brand-image img-circle elevation-3">
                 <span class="brand-text font-weight-light">C&C</span>
             </a>
