@@ -1,0 +1,63 @@
+{% extends './layout.html' %}
+
+{% block contenido2 %} 
+<div class="content-wrapper" style="background-image: url('../static/img/fondo4.png');">
+
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 class="titulom">Inicio</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 col-6">
+                    <div class="small-box bg-info">
+                        <div class="inner">
+                            <h3>Cuadros</h3>
+                            <p> Tipos de cuadros</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-bag"></i>
+                        </div>
+                        <a href="{{ url_for('tipo.tipos')}}" class="small-box-footer">Click para continuar  <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-6">
+                    <div class="small-box bg-warning">
+                        <div class="inner">
+                            <h3>Contactos</h3>
+                            <p>Comunicate con nosotros</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="{{ url_for('contacto.contactos')}}" class="small-box-footer">Click para continuar <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-6">
+                    <div class="small-box bg-danger">
+                        <div class="inner">
+                            <h3>P.Q.R.S.</h3>
+                            <p>Detalla tu peticion</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-cloud"></i>
+                        </div>
+                        <a href="{{ url_for('queja.quejas')}}" class="small-box-footer">Click para continuar <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+        <br>
+        <div id="contenedor" class="col-12" align="center">
+            <img src="../static/img/logoCuadros.png" alt="C&C" width="300" height="300">
+        </div>
+
+
+{% endblock %}
