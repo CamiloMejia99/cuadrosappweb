@@ -3,7 +3,6 @@ from flask import redirect
 from flask import url_for
 
 from tipos import tipo
-from precio import precio
 from contactos import contacto
 from quejas import queja
 from carrito import carritocompras
@@ -54,7 +53,6 @@ def generate_error():
 
 
 app.register_blueprint(tipo)
-app.register_blueprint(precio)
 app.register_blueprint(contacto)
 app.register_blueprint(queja)
 app.register_blueprint(carritocompras)
@@ -135,7 +133,6 @@ def loginUser():
                     session['conectado']        = True
                     session['nombre']           = account['nombre']
                     session['correo']           = account['correo']
-                    session['credencial']       = account['credencial']
                     msg = "Ha iniciado sesión correctamente."
                     return render_template('menu.html', msjAlert = msg, typeAlert=1, dataLogin = dataLoginSesion())
                 else:
@@ -155,7 +152,6 @@ def registerUser():
     if request.method == 'POST':
         nombre          = request.form['nombre']
         correo          = request.form['correo']
-        credencial      = request.form['credencial']
         password        = request.form['password']
         repite_password = request.form['repite_password']
         #current_time = datetime.datetime.now()
@@ -177,7 +173,7 @@ def registerUser():
             password_encriptada = generate_password_hash(password, method='sha256')
             conexion_MySQLdb = connectionBD()
             cursor = conexion_MySQLdb.cursor(dictionary=True)
-            cursor.execute('INSERT INTO users (nombre,correo,credencial,password) VALUES (%s, %s, %s, %s)', ( nombre, correo, credencial, password_encriptada))
+            cursor.execute('INSERT INTO users (nombre,correo,password) VALUES (%s, %s, %s, %s)', ( nombre, correo, password_encriptada))
             conexion_MySQLdb.commit()
             cursor.close()
             msg = 'Cuenta creada correctamente!'
@@ -208,7 +204,6 @@ def logout():
     session.pop('conectado', None)
     session.pop('nombre', None)
     session.pop('correo', None)
-    session.pop('credencial', None)
     #session.clear()
     #msgClose ="La sesión fue cerrada correctamente"
     return render_template('registro.html')

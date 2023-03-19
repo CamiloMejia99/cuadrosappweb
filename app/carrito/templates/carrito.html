@@ -75,7 +75,7 @@
                                                                                             <strong>${{ item_price }} </strong>
                                                                                         </td>
                                                                                         <td class="col-sm-1 col-md-1">
-                                                                                            <a href="{{ url_for('.delete_product', code=session['cart_item'][key]['code']) }}" class="btn btn-danger">
+                                                                                            <a href="{{ url_for('.delete_product', code=session['cart_item'][key]['code']) }}" class="btn btn-danger" onclick="eliminar()">
                                                                                                 <span class="glyphicon glyphicon-remove"></span> Eliminar
                                                                                             </a>
                                                                                         </td>
@@ -99,12 +99,12 @@
                                                                             </tr>
                                                                             <tr>
                                                                                 <td colspan="4">
-                                                                                    <a class="btn btn-default" href="{{ url_for('tipo.tipos')}}">
+                                                                                    <a class="btn btn-default" href="{{ url_for('carritocompras.carrito')}}">
                                                                                         <span class="glyphicon glyphicon-shopping-cart"></span> Continue Comprando.
                                                                                     </a>
                                                                                 </td>
                                                                                 <td>
-                                                                                    <a class="btn btn-default" href="{{ url_for('tipo.tipos')}}">
+                                                                                    <a class="btn btn-default" href="{{ url_for('carritocompras.empty_cart') }}"  onclick="pagar()">
                                                                                         <span class="glyphicon glyphicon-shopping-cart"></span>Pagar
                                                                                     </a>
                                                                                 </td>

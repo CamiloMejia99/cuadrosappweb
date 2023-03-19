@@ -115,13 +115,13 @@ def carrito():
   cursor.close() 
   conn.close()
  
-# @carritocompras.route('/empty')
-# def empty_cart():
-#  try:
-#   session.clear()
-#   return redirect(url_for('.carrito'))
-#  except Exception as e:
-#   print(e)
+@carritocompras.route('/empty')
+def empty_cart():
+ try:
+  session.clear()
+  return redirect(url_for('.carrito'))
+ except Exception as e:
+  print(e)
  
 @carritocompras.route('/delete/<string:code>')
 def delete_product(code):
@@ -151,7 +151,8 @@ def delete_product(code):
   return redirect(url_for('.carrito'))
  except Exception as e:
   print(e)
-   
+
+
 def array_merge( first_array , second_array ):
  if isinstance( first_array , list ) and isinstance( second_array , list ):
   return first_array + second_array
