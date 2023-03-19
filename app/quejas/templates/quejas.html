@@ -2,14 +2,26 @@
 
 
 {% block contenido2 %} 
+    <style>
+        .msg{
+            text-align: center;
+            font-size: 4rem;
+            line-height: 1em;
+            font-weight: 800;
+            color: orange;
+            background: #f2f4f8;
+            display: flex;
+            justify-content: center;
+            margin: 0 auto;
+        }
+    </style>
 
 
     <div class="content-wrapper" style="background-image: url('../static/img/fondo4.png');">
         <div class="content-header">
             <div class="container-fluid">
                 <div class="row mb-2">
-
-                    <br><br>
+                    
                     <div id="contenedor" class="col-12" align="center">
                         <div id="contenedor2" class="col-9" align="left">
                             <div class="card border-info">
@@ -22,92 +34,114 @@
                                                         <section class="content">
                                                             <div class="row">
                                                                 <div class="col-md-12">
-                                                                    <form class="was-validated">
+                                                                   
                                                                         <div class="card2 card-primary">
-
                                                                             <div class="card-header">
                                                                                 <h3 class="card-title">P.Q.R.S.</h3>
                                                                             </div>
                                                                             <div class="container " style="background-color: #BFC4C4;">
-                                                                                <br>
-                                                                                <h4>
-                                                                                    <b>TIPO DE SOLICITUD</b>
+<!--.......................................................................................-->
+                                                                                <div class="container">
+                                                                                    <div class="row">
+                                                                                        <div class="Column" style="margin-top: 5%">
+                                                                                            <h3>
+                                                                                                <strong>
+                                                                                                    <b>ENVIANOS TU SOLICITUD</b>
+                                                                                                </strong>
+                                                                                                <hr>
+                                                                                            </h3>
 
-                                                                                </h4>
+                                                                                            <form action="{{ url_for('queja.registrarForm') }}" method="POST" autocomplete="off">
+                                                                                                <div class="row">
+                                                                                                    <div class="six columns">
+                                                                                                        <label for="nombre">Nombre</label>
+                                                                                                        <input type="text" name="nombre" class="u-full-width">
+                                                                                                        <br>
+                                                                                                    </div>
 
-                                                                                <input type="radio" name="txt_pqr" id="txt_pqrp">
-                                                                                <label>Petición</label> <br>
+                                                                                                    <div class="six columns">
+                                                                                                        <br>
+                                                                                                        <label for="apellido">Apellido</label>
+                                                                                                        <input type="text" name="apellido" class="u-full-width">
+                                                                                                        <br>
+                                                                                                    </div>
 
-                                                                                <input type="radio" name="txt_pqr" id="txt_pqrq">
-                                                                                <label>Queja/Reclamo</label><br>
+                                                                                                    <div class="six columns">
+                                                                                                        <br>
+                                                                                                        <label for="correo">Correo</label>
+                                                                                                        <input type="email" placeholder="correo@ejemplo.com" required aria-required="true" pattern="^.+@.+\.[a-zA-Z]{2,63}$" maxlength="700" aria-label="correo@ejemplo.com"
+                                                                                                        value aria-invalid="false" name="correo" class="u-full-width">
+                                                                                                    </div>
 
-                                                                                <input type="radio" name="txt_pqr" id="txt_pqrs">
-                                                                                <label>Sugerencia</label><br>
-                                                                                <br>
-
-                                                                                <div class="row justify-content-start">
-                                                                                    <!-----contenedor 1---->
-                                                                                    <div class="col-12">
-                                                                                        <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                                                                                        <input type="text" class="form-control" id="">
+                                                                                                    <div class="six columns">
+                                                                                                        <br>
+                                                                                                        <label for="sexo">Sexo</label>
+                                                                                                        <select class="u-full-width" name="sexo">
+                                                                                                            <option value="Masculino">Masculino</option>
+                                                                                                            <option value="Femenino">Femenino</option>
+                                                                                                        </select>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <br>
+                                                                                                <div class="row">
+                                                                                                    <div class="six columns">
+                                                                                                        <label class="example-send-yourself-copy">
+                                                                                                            ¿Te gusta la paginade C&C "cuadros y mas cuadros"? <br>
+                                                                                                            <input type="radio" name="likes" value="1" checked>
+                                                                                                            <span class="label-body">Si</span>
+                                                                                                        </label>
+                                                                                                        <br>
+                                                                                                        <label class="example-send-yourself-copy">
+                                                                                                            <input type="radio" name="likes" value="0">
+                                                                                                            <span class="label-body">No</span>
+                                                                                                        </label>
+                                                                                                        <br>
+                                                                                                    </div>
+                                                                                                    
+                                                                                                    <div class="six columns">
+                                                                                                        <br>
+                                                                                                        <label for="perfil">Describe tu peticion:</label><br>
+                                                                                                        <textarea name="descripcion" class="u-full w-50 "></textarea>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <br>
+                                                                                                <div class="row centered">
+                                                                                                    <div class="seven columns">
+                                                                                                        <input class="btn btn-alert" type="submit" value="Enviar mi formulario">
+                                                                                                        
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </form>
+                                                                                            <br>
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <br>
-                                                                                <label for="exampleInputEmail1" class="form-label">Tipo de documento</label>
-                                                                                <div class="mb-3">
-                                                                                    <select class="form-select" required aria-label="select example">
-                                          <option value="1">Cedula de ciudadania</option>
-                                          <option value="2">Tarjeta de identidad</option>
-                                          <option value="3">Pasaporte</option>
-                                          <option value="4">Otro</option>
-                                        </select>
-                                                                                </div>
-                                                                                <br>
-                                                                                <div class="row justify-content-start">
-                                                                                    <!-----contenedor 1---->
-                                                                                    <div class="col-12">
-                                                                                        <label for="exampleInputEmail1" class="form-label">Numero de documento</label>
-                                                                                        <input type="number" class="form-control" id="">
-                                                                                    </div>
-                                                                                </div>
-                                                                                <br>
-                                                                                <label for="exampleInputEmail1" class="form-label">Adjuntar documento</label>
-                                                                                <div class="mb-3">
-                                                                                    <input type="file" class="form-control" aria-label="file example" required>
-                                                                                    <div class="invalid-feedback">Subir fotocopia de documento</div>
-                                                                                </div>
 
-                                                                                <div class="mb-3">
-                                                                                    <label for="validationTextarea" class="form-label">Descripción de solicitud</label>
-                                                                                    <textarea class="form-control is-invalid" id="validationTextarea" placeholder="Area de texto" required></textarea>
-                                                                                    <div class="invalid-feedback">
-                                                                                        Por favor haga una breve descripción de la solicitud
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="mb-3">
-                                                                                    <button class="btn btn-primary" type="submit">Enviar</button>
-                                                                                </div>
-                                                                                <br>
+                                                                                <script>
+                                                                                setTimeout(function(){
+                                                                                    elementoP = document.querySelector('.msg');
+                                                                                    elementoP.style.display = 'none';
+                                                                                }, 2000);
+                                                                                </script>
+<!--.......................................................................................-->
                                                                             </div>
                                                                         </div>
-                                                                    </form>
+                                                                  
                                                                 </div>
                                                             </div>
+                                                        </section>
                                                     </div>
-                                                    </section>
                                                 </div>
                                             </div>
+                                        </li>
+                                    </ul>
                                 </div>
-                                </li>
-                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
-    </div>
 
-{% endblock %}
+    {% endblock %}

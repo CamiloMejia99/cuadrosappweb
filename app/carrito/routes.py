@@ -6,7 +6,12 @@ from flask import Flask, session, render_template, request, redirect, url_for
 from flaskext.mysql import MySQL
 import pymysql
 
- 
+from babel import numbers, dates
+from datetime import date, datetime, time
+from flask_babel import Babel, gettext, refresh; refresh()
+
+
+
 app = Flask(__name__)
 app.secret_key = "cairocoders-ednalan"
  
@@ -18,7 +23,30 @@ app.config['MYSQL_DATABASE_PASSWORD'] = ''
 app.config['MYSQL_DATABASE_DB'] = 'cuadros_c'
 app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 mysql.init_app(app)
- 
+
+app.config ['BABEL_DEFAULT_LOCALE'] = 'en'
+babel = Babel(app)
+
+def get_locale():
+    return request.accept_languages.best_match('en', 'es', 'fr ')
+babel = Babel(app, locale_selector=get_locale)
+
+#gettext carrito
+
+CARRITO_COMPRAS = gettext('CARRITO DE COMPRAS C&C')
+Tus_Cuadros = gettext('Tus Cuadros')
+Cantidad = gettext('Cantidad')
+Precio_Unitario = gettext('Precio Unitario')
+Precio = gettext('Precio')
+Estado = gettext('Estado:')
+En_existencia = gettext('En Existencia')
+Eliminar = gettext('Eliminar')
+Cantidad_cuadros = gettext('Cantidad de cuadros')
+Total = gettext('Total')
+Continue_Comprando = gettext('Continue Comprando')
+Pagar = gettext('Pagar')
+carrito_vacio = gettext('Tu carrito esta vacio')
+
 @carritocompras.route('/add', methods=['POST'])
 def add_product_to_cart():
  cursor = None
