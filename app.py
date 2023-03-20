@@ -11,7 +11,7 @@ from paginacion import paginacion
 from conexionBD import *  #Importando conexion BD
 from funciones import *  #Importando mis Funciones
 
-import re
+import re 
 from werkzeug.security import generate_password_hash, check_password_hash
 
 
